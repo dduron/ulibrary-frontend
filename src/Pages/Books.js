@@ -8,7 +8,16 @@ class Books extends Component {
       }
     
     componentDidMount() {
-    axios.get(`https://ulibrary-qp3d.onrender.com/books`)
+    axios.get(`https://ulibrary-qp3d.onrender.com/books`, {
+        method: 'GET',
+        mode: 'no-cors',
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'application/json',
+        },
+        withCredentials: true,
+        credentials: 'same-origin',
+      })
         .then(res => {
             const books = res.data;
             this.setState({ books });
